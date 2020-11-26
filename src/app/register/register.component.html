@@ -1,0 +1,146 @@
+<!-- <div>
+<form>
+    <div class="form-group">
+        <input type=text class="form-control" placeholder="Username" name="username" [(ngModel)]="data.username"><br>
+        <input type=password class="form-control" placeholder="Password" name="password"
+            [(ngModel)]="data.password"><br>
+        <input type=password class="form-control" placeholder="Confirm Password" name="confirm"
+            [(ngModel)]="data.confirm"><br>
+        <input type="name" class="form-control" placeholder="Name" name="name" [(ngModel)]="data.name"><br>
+        <select class="form-control" [(ngModel)]="data.gender" name="gender">
+            <option  value="" disabled selected hidden>Gender</option> 
+            <option *ngFor="let state of State" [ngValue]="state">{{state}}</option>
+        </select><br>
+        <input type=tel class="form-control" placeholder="Phone Number" name="phone"
+            [(ngModel)]="data.phone"><br>
+        <input type=email class="form-control" placeholder="Email" name="email" [(ngModel)]="data.email"><br><br>
+        <button (click)="submit()" class="btn btn-sm btn-primary"><b>SignUp</b></button>
+        &nbsp;
+        Already have an Account? <button [routerLink]="'/login'" class="btn btn-sm btn-link" style="color: white">login</button>
+    </div>
+</form>
+</div> -->
+
+    <!-- <form> -->
+   <div>     
+        <form>
+        <div class="form-group">
+            
+            
+                <label class="form-label">User Name </label>
+                
+                <input required minlength="4" type="text" #un='ngModel' name="username" [(ngModel)]="data.username" placeholder="Enter Username"
+                [ngClass]="{'is-invalid':un.invalid && un.touched,'is-valid':un.valid}" class="form-control">
+                <div *ngIf="un.errors" class="invalid-feedback">
+                    <div [hidden]='!un.errors.required'>
+                        User Name is required
+                    </div>
+                    <div *ngIf='un.errors.minlength'>Name should be minimum of 4 characters length</div>
+                </div>
+            
+            </div>
+    
+    
+    
+               <div class="form-group">
+                    <label class="form-label">Password </label>
+                    
+                    <input required minlength="8" type="password" #p='ngModel' name="Password" [(ngModel)]="data.password" required placeholder="Enter Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}" 
+                    [ngClass]="{'is-invalid':p.invalid && p.touched,'is-valid':p.valid}" class="form-control">
+                    
+                    <div *ngIf='p.errors' class="invalid-feedback">
+                        <div [hidden]='!p.errors.required'>Provide Password </div>
+                         <!-- <div *ngIf='p.errors.minlength'>Password should be minimum of 8 characters length</div>  -->
+                      
+                         <div *ngIf='p.errors.pattern'>Password should be 1 uppercase,lowercase,number with 8 to 15 characters length</div>  
+                         <!-- <input type="password" pattern=".{8,12}" required title="8 to 12 characters">  -->
+                         <!-- <div *ngIf='p.errors.pattern'>Password pattern(atleast 1 uppercase,lowercase,number with 8 to 14 character length)</div>  -->
+                    </div>
+                
+               </div>
+<!--     
+               <tr>
+                <th scope="col">Password :</th>
+                <td><input type=password [(ngModel)]="customer.password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" name="password" #password="ngModel" [class.is-invalid]="password.invalid && password.touched" required></td>
+                <div *ngIf="password.touched &&  password.errors">
+                    <small class="text-danger" *ngIf="password.errors.required">Password is required</small>
+                    <small class="text-danger" *ngIf="password.errors.pattern">Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters</small>
+                </div>
+            </tr>
+               -->
+    
+                <div class="form-group">
+                    <label class="form-label"> Confirm Password </label>
+                    
+                    <input required minlength="8" type="password" #c='ngModel' name="confirm" [(ngModel)]="data.confirm" placeholder="Enter Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}" 
+                    [ngClass]="{'is-invalid':c.invalid && c.touched,'is-valid':c.valid}" class="form-control">
+                    <div *ngIf='c.errors' class="invalid-feedback">
+                        <div [hidden]='!c.errors.required'>Provide Password </div>
+                        <!-- <div *ngIf='c.errors.minlength'>Password should be minimum of 4 characters length</div> -->
+                        <div *ngIf='c.errors.pattern'>Password should be 1 uppercase,lowercase,number with 8 to 15 characters length</div>
+                    </div>
+                
+                </div>
+    
+                
+            <div class="form-group">
+                <label class="form-label">Name </label>
+                
+                <input required minlength="3" type="text" #n='ngModel' name="name" [(ngModel)]="data.name" placeholder="Enter Name"
+                [ngClass]="{'is-invalid':n.invalid && n.touched,'is-valid':n.valid}" class="form-control">
+                <div *ngIf="n.errors" class="invalid-feedback">
+                    <div [hidden]='!n.errors.required'>
+                         Name is required
+                    </div>
+                    <div *ngIf='n.errors.minlength'>Name should be minimum of 3 characters length</div>
+                </div>
+            
+            </div>
+    
+    
+    
+            <div class="form-group">
+                <label class="form-label">Gender </label>  
+    
+            <select class="form-control" [(ngModel)]="data.gender" name="gender">
+                <option  value="" disabled selected hidden>Gender</option> 
+                <option *ngFor="let state of State" [ngValue]="state">{{state}}</option>
+            </select><br>
+            
+    
+                <div class="form-group">
+                    <label class="form-label">Phone Number </label>
+                    
+                    <input required type="number" #ph='ngModel' name="userPhoneno" [(ngModel)]="data.phone" placeholder="Enter PhoneNumber"
+                    [ngClass]="{'is-invalid':ph.invalid && ph.touched,'is-valid':ph.valid}" class="form-control" pattern="[7-9]{1}[0-9]{9}">
+                    <div *ngIf="ph.errors" class="invalid-feedback">
+                        <div [hidden]='!ph.errors.required'> Provide Phonenumber </div>
+                        <div *ngIf='ph.errors.pattern'>Phonenumber should be of 10 characters length starts with 7/8/9</div>
+                    </div>
+                    <!-- <input type="text" name="Phone Number" pattern="[7-9]{1}[0-9]{9}"  -->
+                </div>
+            
+            <div class="form-group">
+                <label class="form-label">Email ID </label>
+               
+                <input required type="email" #ue='ngModel' name="email" email="true" [(ngModel)]="data.email" placeholder="Enter Email ID"
+                [ngClass]="{'is-invalid':ue.invalid && ue.touched,'is-valid':ue.valid}" class="form-control" 
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                <div *ngIf="ue.errors" class="invalid-feedback">
+                    <div [hidden]='!ue.errors.required'>
+                        Provide Email Id
+                    </div>
+                    <div *ngIf="ue.errors.pattern">Provide correct email</div>
+                </div>
+            </div>
+            <!-- <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" /> -->
+            <!-- <input [disabled]="userForm.invalid" type="submit" value="Sign Up" class="btn btn-primary"> -->
+             <button (click)="submit()" name="signup" class="btn btn-sm btn-primary"><b>SignUp</b></button><br> 
+            &nbsp;
+            <!-- <div class="float-right">
+            <h5>   <i style="color: black">Already have an Account? <button [routerLink]="'/login'" class="btn btn-sm btn-primary"><b>Login</b></button></i></h5>
+            </div>  -->
+        </div>
+            
+    </form>
+   </div>

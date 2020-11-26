@@ -1,0 +1,19 @@
+<div class="float-right">
+  <button [routerLink]="'/login'" name ="logout" class="btn btn-sm btn-info" >Log Out  &nbsp;<fa-icon [icon]="faAlignJustify"></fa-icon></button>
+</div>
+&nbsp;
+<div style="text-align: center; padding-left: 500px;">
+  <div style="text-align: center;width: 40%;padding-top:50px;border:2px solid black">
+    <div style="color:black;text-align:center">
+      <i><h3>Welcome Admin!</h3></i>
+    </div><br>
+    <div style="text-align:center">
+      <button [routerLink] = " '/airportadmin'" name="vairport" class= "btn btn-sm btn-info">View Airport</button>
+    </div><br> 
+      <div style="text-align:center">
+        <button [routerLink] = " '/flightadmin'" id="vflight" class= "btn btn-sm btn-info">  Add/View Flights</button>
+      </div><br>     
+      <div style="text-align:center;padding-bottom:20px;">
+        <button [routerLink] = " '/scheduleadmin' " class= "btn btn-sm btn-info">Add/View Schedule</button>
+    </div>
+  </div>

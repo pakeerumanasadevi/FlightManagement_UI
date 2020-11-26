@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="row">
+        <h1>Book A Flight</h1>
+    </div>
+    <br>
+    <div class="row">
+        <form>
+            <div class="form-group">
+                <label>Source Airport:</label>
+                <div><select class="form-control" [(ngModel)]="data.source" placeholder="Choose your location" name="source">
+                   
+                    
+                    <option value="" disabled>Choose your location</option>
+                    <option *ngFor="let state of State" [ngValue]="state">{{state}}</option>
+                    
+                </select>
+            </div>
+            
+                <br>
+                <label>Destinantion Airport:</label>
+                <select class="form-control" [(ngModel)]="data.destination" placeholder="Choose your location" name="destination">
+                    <option value="" disabled>Choose your location</option>
+                    <option *ngFor="let state of State" [ngValue]="state">{{state}}</option>
+                </select><br>
+                <label>Date:</label>
+                <div><input type=date class="form-control datepicker" [(ngModel)]="data.date" placeholder="Departure date" name="date" #date="ngModel" required>
+                    <div *ngIf="date.invalid && (date.dirty || date.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="date.errors.required">
+                        departure date is required.
+                    </div>
+                    </div>
+                    </div>
+                <br><br>
+                <button class="btn btn-sm btn-info" (click)="search()"><b>Search <fa-icon [icon]="faSearch"></fa-icon></b></button>
+                <button routerLink="/" class="btn btn-sm btn-dark float-right "><b>Logout &nbsp;</b></button>  
+        
+            </div>
+        </form>
+        
+           
+    </div>
+</div>
+<br>
+
+<div class="container" *ngIf="showFlights">
+    <div style="background-color: darkgrey;" class="row">
+        <h1>Available Flights</h1>
+    </div><br>
+    <div class="row">
+        <div class="col-sm-4" *ngFor="let flight of availableFlights">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-10">
+                            Carrier: {{flight.flight.carrierName}}<br>
+                            Flight Number: {{flight.flight.flightNo}}<br>
+                            Capacity: {{flight.flight.seatCapacity}}<br>
+                            Price: {{flight.fare}}<br>
+                            Departure: {{flight.departure | date: 'dd-MMM-yyyy HH:mm:ss'}}<br>
+                            Arrival: {{flight.arrival | date: 'dd-MMM-yyyy HH:mm:ss'}}
+                        </div>
+                        <div class="col-sm-2" style="margin-left:-10px">
+                            <button class="btn btn-sm btn-info" (click)="book(flight.scheduleId)" style="margin-top:40px;">Book</button>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

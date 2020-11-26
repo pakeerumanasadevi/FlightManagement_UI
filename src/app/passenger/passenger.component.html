@@ -1,0 +1,74 @@
+<br>
+<div class="row">
+    <div class="col-sm-12" style="padding-left: 50px;">
+        <div class="row">
+            <div class="col-md-1">
+                &nbsp;
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row" *ngFor="let i of Arr(cnt).fill(1); let j = index" style="padding-top: 20px">
+                <div class="col-md-1">
+                    Passenger {{j+1}}
+                </div>
+                
+                <div class="col-md-3">
+                    <input type type=text pattern="[A-Za-z].{1,}" class="form-control" placeholder="Name" [(ngModel)]="data[j].name"
+                        name="name" #name="ngModel" required>
+                        <div *ngIf="name.invalid && (name.dirty || name.touched)"
+            class="alert alert-danger">
+        
+          <div *ngIf="name.errors.required">
+            name is required.
+          </div>
+          <div *ngIf="name.errors.pattern">
+            enter a valid name.
+          </div>
+        </div>
+                </div><br>
+                <div class="col-md-1">
+                    <input type type=text pattern="[1-9].{0,1}" class="form-control" placeholder="Age" [(ngModel)]="data[j].age" name="age" #age="ngModel" required>
+                    <div *ngIf="age.invalid && (age.dirty || age.touched)"
+                    class="alert alert-danger">
+                  <div *ngIf="age.errors.required">
+                    age is required.
+                    </div> 
+                    <div *ngIf="age.errors.pattern">
+                        age must be in range 1-99.
+                        </div> 
+                       
+                </div>
+                </div><br>
+                <div class="col-md-2">
+                    <select class="form-control" [(ngModel)]="data[j].gender" name="gender" required>
+                        <option  value="" disabled selected hidden>Gender</option> 
+                        <option *ngFor="let state of State" [ngValue]="state">{{state}}</option>
+                    </select><br>
+                </div>
+                <div class="col-md-2">
+                    <input type type=text class="form-control" placeholder="Phone" [(ngModel)]="data[j].phone"
+                        name="phone" #ph='ngModel' required pattern="[7-9]{1}[0-9]{9}">
+                        <div *ngIf="ph.invalid && (ph.dirty || ph.touched)"
+                        class="alert alert-danger">
+                            <div *ngIf="ph.errors.required">
+                            phone is required.
+                            </div>
+                            <div *ngIf="ph.errors.pattern">
+                            length should be 10 starting with 7/8/9.
+                            </div>
+                       </div>
+                    </div>
+                <br>
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-1">
+                &nbsp;
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-sm btn-success" (click)="add()">Add Passenger</button>&nbsp;&nbsp;
+                <button class="btn btn-sm btn-success" (click)="confirm()">Confirm Booking</button>
+            </div>
+        </div>
+    </div>
+</div>
+

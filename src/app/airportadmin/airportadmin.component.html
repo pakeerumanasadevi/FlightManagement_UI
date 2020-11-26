@@ -1,0 +1,17 @@
+<div class="float-right">
+    <button [routerLink]="'/login'" name="logoutairport" class="btn btn-sm btn-info" >Log Out  &nbsp;<fa-icon [icon]="faAlignJustify"></fa-icon></button>
+</div>
+&nbsp;<div class="container">
+    <div class="row">
+         
+        <button (click)="showSearch = true;" class="btn btn-sm btn-info">View <fa-icon [icon]="faEye"></fa-icon></button> &nbsp; &nbsp; &nbsp; 
+       
+    </div>
+    <div class="row">
+        
+        <app-searchairport *ngIf="showSearch"></app-searchairport>
+        
+    </div>
+</div>
+
+<!-- (updateAirport)="showSearch = false;updair.updateAirport($event) -->

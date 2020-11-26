@@ -1,0 +1,57 @@
+<br>
+<div class="container">
+    <div class="row">
+        <div class="form-group">
+            <input type=text class="form-control" id="airid" placeholder="Airport Id" [(ngModel)]="data.airportId"
+                name="airportId"><br>
+            <button class="btn btn-sm btn-success" name="search" style="display: inline;" (click)="searchAirport()">Search <fa-icon [icon]="faSearch"></fa-icon></button>
+        </div>
+    </div>
+</div>
+<br><br><br>
+<div class="container" style="width: 100%;" *ngIf="airportData.length > 1">
+    <div class="row">
+        <div class="col-sm-3" *ngFor="let airport of airportData">
+            <div class="card">
+                <div class="card-body" style="width: 18rem;"> 
+                    <div class="row">
+                        <div class="col-sm-20">
+                            <h6><i>Airport Id:</i></h6> {{airport.airportId}}<br>
+                            <h6><i>Airport Name:</i></h6> {{airport.airportName}}<br>
+                            <h6><i>Area:</i></h6> {{airport.area}}<br>
+                        </div>
+                        <!-- <div class="col-sm-5">
+                            <button class="btn btn-sm btn-info" (click)="update(airport)"
+                                style="margin-top:10px;">Update <fa-icon [icon]="faPenSquare"></fa-icon></button>
+                            <br>
+                            <button class="btn btn-sm btn-danger" (click)="delete(flight.flightNo)"
+                                style="margin-top:20px;">Delete <fa-icon [icon]="faTrash"></fa-icon></button>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" style="width: 100%;" *ngIf="airportData.length == 1">
+    <div class="row">
+            <div class="card">
+                <div class="card-body" style="width: 18rem;">
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <h6><i>Airport Id:</i></h6> {{airportData[0].airportId}}<br>
+                                <h6><i> Airport Name:</i></h6> {{airportData[0].airportName}}<br>
+                                    <h6><i> Area:</i></h6> {{airportData[0].area}}<br>
+                        </div>
+                        <!-- <div class="col-sm-5">
+                            <button class="btn btn-sm btn-info" (click)="update(flightData[0])"
+                                style="margin-top:10px;">Update <fa-icon [icon]="faPenSquare"></fa-icon></button>
+                            <br>
+                            <button class="btn btn-sm btn-danger" (click)="delete(flightData[0].flightNo)"
+                                style="margin-top:20px;">Delete <fa-icon [icon]="faTrash"></fa-icon></button>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
